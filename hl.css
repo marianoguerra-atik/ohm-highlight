@@ -1,0 +1,20 @@
+::highlight(op) {
+  color: red;
+}
+::highlight(punct) {
+  color: purple;
+}
+::highlight(kw) {
+  color: blue;
+  font-weight: bold;
+}
+::highlight(ident) {
+  color: green;
+  font-style: italic;
+}
+::highlight(string) {
+  color: #555555;
+}
+::highlight(number) {
+  color: magenta;
+}
