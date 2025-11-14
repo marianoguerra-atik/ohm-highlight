@@ -34,9 +34,13 @@ function highlightCodeInNode(code, node) {
     console.error(error);
     return;
   }
-  for (const key in info.byType) {
+  highlightCodeInNodeFromData(node, info.byType);
+}
+
+function highlightCodeInNodeFromData(node, byType) {
+  for (const key in byType) {
     const hl = new Highlight();
-    for (const [from, to] of info.byType[key]) {
+    for (const [from, to] of byType[key]) {
       const range = new Range();
       range.setStart(node, from);
       range.setEnd(node, to);
