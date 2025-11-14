@@ -23,7 +23,7 @@ Finally I created a basic [highlight css file](https://github.com/marianoguerra-
 
 ## Notes
 
-You don't need to ship ohm and the grammar to highlight if the programs are known ahead of time, just ship the `byType` data structure as JSON and call `highlightCodeInNodeFromData` instead of `getHighlightInfo(code)`.
+You don't need to ship ohm and the grammar to highlight if the source code you want to highlight is known ahead of time, just ship the `byType` data structure as JSON and call `highlightCodeInNodeFromData` instead of `getHighlightInfo(code)`.
 
 ## License
 

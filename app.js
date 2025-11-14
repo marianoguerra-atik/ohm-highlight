@@ -38,6 +38,7 @@ function highlightCodeInNode(code, node) {
 }
 
 function highlightCodeInNodeFromData(node, byType) {
+  console.log("highlighting", byType);
   for (const key in byType) {
     const hl = new Highlight();
     for (const [from, to] of byType[key]) {
