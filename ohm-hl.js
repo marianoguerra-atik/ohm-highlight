@@ -224,7 +224,7 @@ semantics.addOperation("toHLInfo(ctx)", {
   },
 });
 
-class HLInfo {
+export class HLInfo {
   constructor() {
     this.byType = {};
   }
@@ -238,15 +238,18 @@ class HLInfo {
   addRange(type, from, to) {
     this._add(type, from.source.startIdx, to.source.endIdx);
   }
-}
-
-export function getHighlightInfo(code) {
-  const matchResult = wafer.match(code);
-  const info = new HLInfo();
-  try {
-    semantics(matchResult).toHLInfo(info);
-    return { info, error: null };
-  } catch (error) {
-    return { info, error };
+  static fromOhm(code, grammar, opName = "toHLInfo") {
+    const matchResult = grammar.match(code);
+    const info = new HLInfo();
+    // TODO: check if succeeded instead?
+    try {
+      semantics(matchResult)[opName](info);
+      return { info, error: null };
+    } catch (error) {
+      return { info, error };
+    }
   }
+}
+export function getHighlightInfo(code) {
+  return HLInfo.fromOhm(code, wafer);
 }

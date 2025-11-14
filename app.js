@@ -18,7 +18,7 @@ function main() {
     const node = new Text(code);
     output.appendChild(node);
     // NOTE: node has to be in the dom tree before applying the highlights?
-    textNodeForCode(node, code);
+    highlightCodeInNode(code, node);
   }
   input.textContent = examples.str;
   updateHL(examples.str);
@@ -28,10 +28,11 @@ function main() {
   });
 }
 
-function textNodeForCode(node, code) {
+function highlightCodeInNode(code, node) {
   const { info, error } = getHighlightInfo(code);
   if (error) {
     console.error(error);
+    return;
   }
   for (const key in info.byType) {
     const hl = new Highlight();
